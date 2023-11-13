@@ -1,0 +1,22 @@
+{
+  "name": "vendor_name/project_patientendossier",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "dennis",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+    "phpunit/phpunit": "^9.5",
+    "guzzlehttp/guzzle": "^7.4",
+    "ext-pdo": "*",
+    "ext-dom": "*",
+    "ext-http": "*"
+  },
+  "autoload": {
+    "psr-4": {"Acme\\": "src/"}
+  }
+}

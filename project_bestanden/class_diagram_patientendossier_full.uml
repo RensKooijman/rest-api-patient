@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>PHP</ID>
+  <OriginalElement>/Users/dennis/Documents/Develop/LES/GITHUB_CLASSROOM/project_patientendossier</OriginalElement>
+  <nodes>
+    <node x="1154.5705368289637" y="172.0">\Acme\classes\request\Request</node>
+    <node x="-299.0" y="6.5">\Acme\classes\model\Model</node>
+    <node x="492.75" y="756.1760299625469">\Acme\classes\renderer\XmlRenderer</node>
+    <node x="233.0" y="519.0">\Acme\classes\request\PutRequestHandler</node>
+    <node x="-488.0" y="519.0">\Acme\classes\model\PractitionerModel</node>
+    <node x="53.0" y="519.0">\Acme\classes\model\PatientModel</node>
+    <node x="653.75" y="756.1760299625469">\Acme\classes\renderer\JsonRenderer</node>
+    <node x="326.55680399500625" y="6.5">\Acme\classes\model\DotEnv</node>
+    <node x="549.75" y="160.50000000000003">\Acme\classes\request\RequestHandler</node>
+    <node x="70.27840199750312" y="6.5">\Acme\classes\model\Database</node>
+    <node x="-299.0" y="507.5">\Acme\classes\model\AppointmentModel</node>
+    <node x="650.0" y="519.0">\Acme\classes\request\DeleteRequestHandler</node>
+    <node x="441.0" y="519.0">\Acme\classes\request\PostRequestHandler</node>
+    <node x="556.75" y="653.1760299625469">\Acme\classes\renderer\IRendererInterface</node>
+    <node x="874.0" y="519.0">\Acme\classes\request\GetRequestHandler</node>
+    <node x="1120.5705368289637" y="519.0">\Acme\classes\request\RequestHandlerFactory</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="\Acme\classes\request\PutRequestHandler" target="\Acme\classes\request\RequestHandler" relationship="GENERALIZATION">
+      <point x="0.0" y="-37.5" />
+      <point x="327.0" y="482.5" />
+      <point x="643.75" y="482.5" />
+      <point x="0.0" y="148.5" />
+    </edge>
+    <edge source="\Acme\classes\request\DeleteRequestHandler" target="\Acme\classes\request\RequestHandler" relationship="GENERALIZATION">
+      <point x="0.0" y="-37.5" />
+      <point x="752.0" y="482.1387448381829" />
+      <point x="643.75" y="482.1387448381829" />
+      <point x="0.0" y="148.5" />
+    </edge>
+    <edge source="\Acme\classes\request\GetRequestHandler" target="\Acme\classes\request\RequestHandler" relationship="GENERALIZATION">
+      <point x="0.0" y="-37.5" />
+      <point x="968.0" y="482.1387448381829" />
+      <point x="643.75" y="482.1387448381829" />
+      <point x="0.0" y="148.5" />
+    </edge>
+    <edge source="\Acme\classes\model\PatientModel" target="\Acme\classes\model\Model" relationship="GENERALIZATION">
+      <point x="0.0" y="-49.0" />
+      <point x="120.5" y="482.5" />
+      <point x="-133.0" y="482.5" />
+      <point x="0.0" y="225.5" />
+    </edge>
+    <edge source="\Acme\classes\request\PostRequestHandler" target="\Acme\classes\request\RequestHandler" relationship="GENERALIZATION">
+      <point x="0.0" y="-37.5" />
+      <point x="535.5" y="482.138744838183" />
+      <point x="643.75" y="482.138744838183" />
+      <point x="0.0" y="148.5" />
+    </edge>
+    <edge source="\Acme\classes\model\PractitionerModel" target="\Acme\classes\model\Model" relationship="GENERALIZATION">
+      <point x="0.0" y="-49.0" />
+      <point x="-403.5" y="482.5" />
+      <point x="-133.0" y="482.5" />
+      <point x="0.0" y="225.5" />
+    </edge>
+    <edge source="\Acme\classes\renderer\JsonRenderer" target="\Acme\classes\renderer\IRendererInterface" relationship="REALIZATION">
+      <point x="0.0" y="-26.5" />
+      <point x="724.25" y="731.1760299625469" />
+      <point x="643.75" y="731.1760299625469" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="\Acme\classes\model\AppointmentModel" target="\Acme\classes\model\Model" relationship="GENERALIZATION">
+      <point x="0.0" y="-60.5" />
+      <point x="0.0" y="225.5" />
+    </edge>
+    <edge source="\Acme\classes\renderer\XmlRenderer" target="\Acme\classes\renderer\IRendererInterface" relationship="REALIZATION">
+      <point x="0.0" y="-26.5" />
+      <point x="563.25" y="731.1760299625469" />
+      <point x="643.75" y="731.1760299625469" />
+      <point x="0.0" y="26.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.7626290059750136" showDependencies="false" x="422.0" y="408.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constants</Category>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,38 @@
+Ga naar https://app.quickdatabasediagrams.com/#/ en plak onderstaande tekst in de editor om het databasediagram te zien:
+
+patient
+-
+patient_identifier PK varchar(255)
+active boolean default=true          # Whether this patient's record is in active use
+name varchar(100)   	            # A name associated with the patient
+telecom varchar(15) 	            # A contact detail for the individual
+gender varchar(7) default='unknown' # male | female | other | unknown
+birthDate timestamp  	            # The date of birth for the individual
+deceasedBoolean boolean default=0
+deceasedDateTime timestamp default=CURRENT_TIMESTAMP
+address varchar(255)                # An address for the individual
+photo varchar(255)                  # Image of the patient (image filename)
+
+practitioner
+-
+practitioner_identifier PK varchar(255)
+active boolean default=true         # Whether this practitioner's record is in active use
+name varchar(100)                   #  The name(s) associated with the practitioner
+telecom varchar(15)                 # A contact detail for the practitioner (that apply to all roles)
+address varchar(255)                # Address(es) of the practitioner that are not role specific (typically home address)
+gender varchar(7) default='unknown' # male | female | other | unknown
+birthDate timestamp  	            # The date  on which the practitioner was born
+photo varchar(255)                  # Image of the person (image filename)
+
+appointment
+-
+appointment_identifier PK varchar(255)
+patient_identifier varchar(255) FK >- patient.patient_identifier
+practitioner_identifier varchar(255) FK >- practitioner.practitioner_identifier
+status varchar(255)                 # proposed | pending | booked | arrived | fulfilled | cancelled | noshow | entered-in-error | checked-in | waitlist
+cancelationreason varchar(255) NULL # The reason for the appointment being cancelled
+reason varchar(255) NULL            # Reason this appointment is scheduled
+start timestamp                     # When appointment is to take place
+end timestamp                       # When appointment is to conclude
+created timestamp default=CURRENT_TIMESTAMP            # The date that this appointment was initially created
+summary text NULL                   # Summary conversation
