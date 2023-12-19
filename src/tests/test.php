@@ -2,7 +2,7 @@
 
 namespace Acme\tests;
 
-require_once "../../vendor/autoload.php";
+require_once( __DIR__ . "/../../vendor/autoload.php");
 
 use Acme\classes\model\DotEnv;
 use GuzzleHttp\Client;
@@ -11,7 +11,7 @@ use http\Exception\BadHeaderException;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 
-class APICheckRoutesTest extends TestCase
+class test extends TestCase
 {
 
     private function getGUID(): string
@@ -168,6 +168,14 @@ class APICheckRoutesTest extends TestCase
                 "check" => 'equals'
             ],
             [
+                "test" => "Verwijder een specifieke medicein toewijzing",
+                "url" => $url . "?resource=medicine&identifier=$medicine_identifier",
+                "method" => "delete",
+                "data" => "",
+                "result" => '{"result":"1"}',
+                "check" => 'equals'
+            ],
+            [
                 "test" => "Verwijder een specifieke patient",
                 "url" => $url . "?resource=patient&identifier=$patient_identifier",
                 "method" => "delete",
@@ -183,7 +191,6 @@ class APICheckRoutesTest extends TestCase
                 "result" => '{"result":"1"}',
                 "check" => 'equals'
             ]
-
         ];
     }
 
@@ -191,9 +198,9 @@ class APICheckRoutesTest extends TestCase
      * @dataProvider URLTestsProvider
      * @throws GuzzleException
      */
-    public function testUrl(array $test)
+    public function urlTest(array $tester)
     {
-        extract($test); //keys worden variabelen met value
+        extract($tester); //keys worden variabelen met value
         if (!in_array(strtolower($method), ['post', 'get', 'put', 'delete', 'options', 'head'])) {
             self::throwException(new BadHeaderException());
         }
@@ -232,19 +239,19 @@ class APICheckRoutesTest extends TestCase
      */
     public function test(): void
     {
-        foreach ($this->URLTestsProvider() as $test) {
-            $this->testUrl($test);
+        foreach ($this->URLTestsProvider() as $tests) {
+            $this->urlTest($tests);
         }
     }
 }
 
-const ENV_PATH = '../../.env';
+const ENV_PATH = __DIR__ . '../../../.env';
 $env = new DotEnv(ENV_PATH);
 $env->load();
 
-$x = new APICheckRoutesTest();
+$x = new test();
 try {
-    $x->test();
+    $x->Test();
 } catch (GuzzleException $e) {
     echo $e->getMessage();
 }

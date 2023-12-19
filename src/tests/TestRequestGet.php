@@ -2,7 +2,7 @@
 
 namespace Acme\tests;
 
-require '../../vendor/autoload.php';
+require(__DIR__ . '/../../vendor/autoload.php');
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;

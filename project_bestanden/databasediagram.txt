@@ -36,3 +36,12 @@ start timestamp                     # When appointment is to take place
 end timestamp                       # When appointment is to conclude
 created timestamp default=CURRENT_TIMESTAMP            # The date that this appointment was initially created
 summary text NULL                   # Summary conversation
+
+medicine
+-
+medicine_identifier PK varchar(255)
+patient_identifier varchar(255) FK >- patient.patient_identifier
+practitioner_identifier varchar(255) FK >- practitioner.practitioner_identifier
+name varchar(100)                   # What kind of medicine
+howtouse varchar(250)               # How many times to use the medicine
+amount int(100)                    # How many pills are there in a box                
