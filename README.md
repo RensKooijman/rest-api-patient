@@ -57,3 +57,5 @@ http://hl7.org/fhir/http.html
 mysqli configuration: my.ini{
   sql_mode:"STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION" >>>>> sql_mode:""
 }  
+
+PHPUnit command: vendor/bin/phpunit --bootstrap ./vendor/autoload.php ./src/tests/test.php
