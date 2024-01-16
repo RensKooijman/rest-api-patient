@@ -2,6 +2,7 @@
 
 namespace Acme\classes\request;
 
+use GuzzleHttp\Exception\GuzzleException;
 use http\Exception\BadHeaderException;
 
 class Request
@@ -50,6 +51,7 @@ class Request
             $arr['identifier'] = $this->data['identifier'];
         }
         $this->data['data'] = $arr;
+        $this->validateQueryString($_SERVER['QUERY_STRING']);
     }
 
     private function setContentType(): void
@@ -83,5 +85,55 @@ class Request
     public function getAcceptType(): string
     {
         return $this->acceptType[0];
+    }
+
+    public function validateQueryString(string $string): void
+    {
+        if(!is_string($string)){
+            throw new BadHeaderException(
+                'Invalid type input expected string else given'
+            );
+        }
+        parse_str($_SERVER['QUERY_STRING'], $arr);
+        if(!is_array($arr)){
+            throw new BadHeaderException(
+                'something went wrong converting query string to values and identifiers'
+            ); 
+        }
+        switch($this->getMethod()){
+            case 'GET';
+                if(empty($arr['fields']) | empty($arr['resource'])){
+                    throw new BadHeaderException(
+                        'not all needed fields given. needed fields: "fields, identifier, resource"'
+                    );  
+                }
+                break;
+            case 'POST':
+                if(empty($arr['identifier']) | empty($this->getData()) | empty($arr['resource'])){
+                    throw new BadHeaderException(
+                        'not all needed fields given. needed fields: "data (body), identifier, resource"'
+                    );
+                }
+                break;
+            case 'PUT':
+                if(empty($arr['identifier']) | empty($this->getData()) | empty($arr['resource'])){
+                    throw new BadHeaderException(
+                        'not all needed fields given. needed fields: "data (body), identifier, resource"'
+                    );
+                }
+                break;
+            case 'DELETE':
+                if(empty($arr['identifier']) |  empty($arr['resource'])){
+                    throw new BadHeaderException(
+                        'not all needed fields given. needed fields: " identifier, resource"'
+                    );
+                }
+                break;
+            default:
+                throw new BadHeaderException(
+                    'no method given or method is not implemented'
+                );
+                break;
+        }
     }
 }

@@ -231,7 +231,7 @@ class test extends TestCase
                 echo "<hr>";
             }
         });
-        $promise->wait();
+        $promise->wait(); 
     }
 
     /**
