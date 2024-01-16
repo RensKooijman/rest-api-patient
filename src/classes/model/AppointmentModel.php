@@ -2,6 +2,7 @@
 
 namespace Acme\classes\model;
 
+use Acme\classes\model\PatientModel;
 class AppointmentModel extends Model
 {
 
@@ -13,11 +14,10 @@ class AppointmentModel extends Model
         parent::__construct(Database::getInstance());
     }
 
-    public function getAll($fields = "*", $condition = array(), $order = null, $startIndex = null, $count = null): array
+    public function getAll($fields = "*", $condition = array(), $order = null, $startIndex = null, $count = null, $extraQuery = null): array
     {
-        // TODO: Resultaten aanvullen met patientgegevens uit patienttabel
-
-        $results = parent::getAll($fields, $condition, $order, $startIndex, $count);
+        $extraQuery = "INNER JOIN patient ON appointment.patient_identifier = patient.patient_identifier";
+        $results = parent::getAll($fields, $condition, $order, $startIndex, $count, $extraQuery);
 
         return $results;
     }
